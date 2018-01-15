@@ -8,6 +8,10 @@ app.use('/',express.static('./public'));
       res.render("landing.ejs");
   });
 
+ app.get("/swoosh",function (req,res) {
+     res.send("bitch ")
+ })
+
   app.listen(process.env.PORT || 4000,function () {
       console.log("Server Started !")
   })
