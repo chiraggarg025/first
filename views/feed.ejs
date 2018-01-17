@@ -6,27 +6,43 @@
         <h1 class="display-4"><i class="fa fa-venus-mars" aria-hidden="true"></i> Welcome to Swoosh! </h1>
         <p class="lead">This is a feline dating app where you can find your loved one's!</p>
         <p class="lead">
-            <a class="btn btn-success btn-lg" href="#" role="button">Let's Roll</a>
+            <a class="btn btn-success btn-lg" href="/feed/newprofile" role="button">Let's Roll !</a>
         </p>
     </div>
+       <div class="row">
+
     <%feeds.forEach(function(feed){%>
-    <div class="col-lg-4 col-sm-6 img-thumbnail ">
-        <p><%= feed.title %></p>
-        <span><%= feed.created%></span>
-        <div class="edit"><img src="<%=feed.image%>">
-            <p><%= feed.body%></p>
-            <a class="btn btn-success btn-lg" href="/feed/info" role="button">Let's Roll</a>
-        </div>
+           <div class ="col-lg-4">
+        <div class="ui link cards">
+            <div class="card">
+                <div class="image">
+                    <img src="<%= feed.image%>">
+                </div>
+                <div class="content">
+                    <div class="header"><%=feed.username%></div>
+                    <div class="meta">
+                        <a>Friends</a>
+                    </div>
+                    <div class="description">
+                        <%= feed.description%>
+                    </div>
+                    <div class="btn btn-lg btn-success">Add friend</div>
+                </div>
+                <div class="extra content">
+      <span class="right floated">
+       <%=feed.created%>
+      </span>
+                    <span>
+        <i class="user icon"></i>
+        75 Friends
+      </span>
+                </div>
+            </div>
     </div>
-    <% }) %>
-    <div class="row">
+     </div>
+          <% }) %>
 
-
-
-    </div>
-</div>
-
-
+     </div>
 
 </div>
 

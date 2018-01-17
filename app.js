@@ -36,25 +36,19 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //Routes
-//Landing
+
+//------------------------Landing Page------------------------------------->
 app.get("/",function (req,res) {
 
       res.render("landing");
   });
-//SignUp
+//------------------------SignUp Page--------------------------------------->
  app.get("/signup",function (req,res) {
      res.render("signup");
  });
 
  app.post("/signup",function (req,res) {
 
-     req.body.username;
-     req.body.email;
-     req.body.password;
-     req.body.number;
-     req.body.address;
-     req.body.date;
-     req.body.description;
      User.register(new User({username :req.body.username, email:req.body.email,
                              number: req.body.number, address:req.body.address,
                              date: req.body.date, gender:req.body.description}),req.body.password,function(err,user){
@@ -69,7 +63,7 @@ app.get("/",function (req,res) {
 
 
  });
-//Login
+//---------------------------Login Page----------------------------------------->
 
 app.get("/login",function(req,res){
     res.render("login");
@@ -82,17 +76,17 @@ app.post('/login',
     }
 );
 
-//Logout
+//-------------------------------Logout------------------------------------------->
 app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
 });
-//About
+//--------------------------------About Page-------------------------------------->
 app.get("/about",function(req,res){
     res.send("This will be the about page");
 });
 
-//Feed
+//---------------------------------Feed Page--------------------------------------->
 app.get("/feed",function(req,res){
      Feed.find({},function(err,feeds){
          if(err){
@@ -103,13 +97,21 @@ app.get("/feed",function(req,res){
      });
 
 });
-// Feed.create({
-//     title:"Test Feed",
-//     image:"https://source.unsplash.com/utG-uy8eP5E",
-//     body :"this is amazing"
-// });
+app.get("/feed/newprofile",function(req,res){
+   res.render("newProfile") ;
+});
+app.post("/feed",function (req,res) {
+    Feed.create(req.body.feed,function (err,newFeed) {
+      if(err){
+          console.log(err);
+      }  else{
+          res.redirect("/feed");
+      }
+    })
+});
 
-//profile
+
+//---------------------------------profile----------------------------------------------->
 app.get("/feed/info",function(req,res){
    res.send("this will be the info of a profile");
 });

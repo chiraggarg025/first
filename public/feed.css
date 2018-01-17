@@ -4,11 +4,6 @@
     background-color: #ecf0f1;
 }
 
-img{
-     float: left;
-      width: 350px;
-    height: 300px;
-    border : 2px solid grey;
-    display:block;
-    padding: auto auto;
+.card{
+    box-shadow: black;
 }

@@ -1,0 +1,35 @@
+<%include ./partials/header.ejs %>
+<link rel="stylesheet" href="/new.css">
+<div class = "container edit">
+    <h2>New Swoosh!</h2>
+
+    <div class = "col-lg-12">
+        <hr>
+        <form action="/feed" method="POST">
+            <div class ="form-group">
+                <input type="text" class="form-control" name="feed[username]" placeholder="Username" required>
+            </div>
+            <div class ="form-group">
+                <input type="text" class ="form-control" name="feed[image]" placeholder="Image URL" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comment" id="comment"><strong>Add something lovely about yourself !:</strong></label>
+                <textarea class="form-control" rows="5" id="comment" name="feed[description]" required></textarea>
+            </div>
+            <div class ="form-group term"><strong>
+                <input type="text" class ="form-control" name="feed[address]" placeholder="Address" required>
+
+            <p>
+                <input type="radio" name="feed[gender]" value="male" checked> Male<br>
+                <input type="radio" name="feed[gender]">  Female<br>
+            <p>
+            <p style="font-size: 1.2em" class="term">By clicking Create Profile, you agree to our Terms and confirm that you have read our Data Policy, including our Cookie Use Policy. You may receive SMS message notifications from Swoosh! and can opt out at any time.</strong></p>
+
+
+
+            <button type="submit" class="btn btn-success btn-lg btn-block">Create Profile</button>
+        </form>
+    </div>
+</div>
+    <%include ./partials/footer.ejs %>
