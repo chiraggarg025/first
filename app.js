@@ -7,6 +7,7 @@ var express         = require("express"),
     session         = require("express-session"),
     flash           = require("flash")
     User            = require("./models/user.js"),
+    Feed            = require("./models/feed.js"),
     mongoose        = require("mongoose");
 
 
@@ -93,9 +94,25 @@ app.get("/about",function(req,res){
 
 //Feed
 app.get("/feed",function(req,res){
-    res.render("feed");
-});
+     Feed.find({},function(err,feeds){
+         if(err){
+             console.log(err);
+         }else{
+            res.render("feed",{feeds:feeds});
+         }
+     });
 
+});
+// Feed.create({
+//     title:"Test Feed",
+//     image:"https://source.unsplash.com/utG-uy8eP5E",
+//     body :"this is amazing"
+// });
+
+//profile
+app.get("/feed/info",function(req,res){
+   res.send("this will be the info of a profile");
+});
 
   app.listen(process.env.PORT || 4000,function () {
       console.log("Server Started !")

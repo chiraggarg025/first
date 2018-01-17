@@ -1,11 +1,33 @@
 <%include ./partials/header.ejs %>
+
+<link rel="stylesheet" href="/feed.css">
 <div class="container">
     <div class="jumbotron">
-        <h1 class="display-4">Welcome to Swoosh! </h1>
+        <h1 class="display-4"><i class="fa fa-venus-mars" aria-hidden="true"></i> Welcome to Swoosh! </h1>
         <p class="lead">This is a feline dating app where you can find your loved one's!</p>
         <p class="lead">
             <a class="btn btn-success btn-lg" href="#" role="button">Let's Roll</a>
         </p>
     </div>
+    <%feeds.forEach(function(feed){%>
+    <div class="col-lg-4 col-sm-6 img-thumbnail ">
+        <p><%= feed.title %></p>
+        <span><%= feed.created%></span>
+        <div class="edit"><img src="<%=feed.image%>">
+            <p><%= feed.body%></p>
+            <a class="btn btn-success btn-lg" href="/feed/info" role="button">Let's Roll</a>
+        </div>
+    </div>
+    <% }) %>
+    <div class="row">
+
+
+
+    </div>
 </div>
+
+
+
+</div>
+
 <%include ./partials/footer.ejs %>
