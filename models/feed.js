@@ -7,9 +7,13 @@ var FeedSchema = new mongoose.Schema({
     address : String,
     age     : {type : Date },
     created : {type: Date, default:Date.now },
-    gender: {type: String, possibleValues: ['male','female']}
+    gender: {type: String, possibleValues: ['male','female']},
+    comment : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref  : "Comment"
+    }]
 
-});
+},{ usePushEach: true });
 FeedSchema.plugin(passportLocalMongoose);
 
 module.exports =mongoose.model("Feed",FeedSchema);

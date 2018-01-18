@@ -8,6 +8,7 @@ var express         = require("express"),
     flash           = require("flash"),
     User            = require("./models/user.js"),
     Feed            = require("./models/feed.js"),
+    Comment         = require("./models/comment.js"),
     mongoose        = require("mongoose");
 
 
@@ -142,7 +143,7 @@ app.get("/feed/:id",function(req,res){
        }
     });
  });
-//Delete Profile Route
+//------------------------------------------Delete Profile Route--------------------------
 app.delete("/feed/:id",function (req,res) {
    Feed.findByIdAndRemove(req.params.id,function (err) {
        if(err){
@@ -152,7 +153,7 @@ app.delete("/feed/:id",function (req,res) {
        }
    }) ;
 });
-  app.listen(process.env.PORT || 4000,function () {
+  app.listen(process.env.PORT || 5000,function () {
       console.log("Server Started !")
   });
 
