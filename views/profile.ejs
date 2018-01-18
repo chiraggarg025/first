@@ -34,9 +34,11 @@
                     <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><%=feed.username%>123@gmail.com</p>
                     <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
                     <p style="text-transform: capitalize"><i class="fa fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" aria-hidden="true"></i><%=feed.gender%> </p>
-                    <div class="ui two buttons">
+                    <div class="ui  buttons">
                         <a href="/feed/<%=feed._id%>/edit" class="ui basic green button">Edit Profile</a>
-                        <a href="#" class="ui basic red button">Delete Profile</a>
+                        <form action="/feed/<%=feed.id%>?_method=DELETE" method="POST" style="padding-left: 20px">
+                            <button class="ui basic red button">Delete Profile</button>
+                        </form>
                     </div>
                     <hr>
 

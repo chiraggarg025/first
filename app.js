@@ -142,7 +142,16 @@ app.get("/feed/:id",function(req,res){
        }
     });
  });
-
+//Delete Profile Route
+app.delete("/feed/:id",function (req,res) {
+   Feed.findByIdAndRemove(req.params.id,function (err) {
+       if(err){
+           res.redirect("/feed");
+       }else{
+           res.redirect("/feed")
+       }
+   }) ;
+});
   app.listen(process.env.PORT || 4000,function () {
       console.log("Server Started !")
   });
