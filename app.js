@@ -97,6 +97,7 @@ app.get("/feed",function(req,res){
      });
 
 });
+//-----------------------------------New Feed---------------------------------------->
 app.get("/feed/newprofile",function(req,res){
    res.render("newProfile") ;
 });
@@ -112,8 +113,8 @@ app.post("/feed",function (req,res) {
 
 
 //---------------------------------profile----------------------------------------------->
-app.get("/feed/info",function(req,res){
-   res.send("this will be the info of a profile");
+app.get("/feed/:id",function(req,res){
+   res.render("profile");
 });
 
   app.listen(process.env.PORT || 4000,function () {
