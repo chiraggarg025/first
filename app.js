@@ -49,9 +49,7 @@ app.get("/",function (req,res) {
 
  app.post("/signup",function (req,res) {
 
-     User.register(new User({username :req.body.username, email:req.body.email,
-                             number: req.body.number, address:req.body.address,
-                             date: req.body.date, gender:req.body.description}),req.body.password,function(err,user){
+     User.register(new User({username :req.body.username, email:req.body.email}),req.body.password,function(err,user){
          if(err){
              console.log(err);
 
@@ -114,7 +112,15 @@ app.post("/feed",function (req,res) {
 
 //---------------------------------profile----------------------------------------------->
 app.get("/feed/:id",function(req,res){
-   res.render("profile");
+
+        Feed.findById(req.params.id,function(err,foundFeed){
+         if(err){
+             res.redirect("/feed");
+         }   else{
+             res.render("profile",{feed:foundFeed});
+         }
+        });
+
 });
 
   app.listen(process.env.PORT || 4000,function () {

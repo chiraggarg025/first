@@ -1,12 +1,53 @@
 <%include ./partials/header.ejs %>
+<link href="https://fonts.googleapis.com/css?family=Rubic" rel="stylesheet">
+         <link rel="stylesheet" href="/profile.css">
 
+        <div class="container jumbotron ">
+            <div class="row">
+            <div class="col-lg-4">
+            <div class="ui link card">
+                <div class="image">
+                    <img src="<%= feed.image%>">
+                </div>
+                <div class="content">
+                    <div class="header"><%=feed.username%></div>
+                    <div class="meta">
+                        <a>Friends</a>
+                    </div>
+                    <div class="description">
 
-<h1>This will be the profile</h1>
+                    </div>
 
+                </div>
+                <div class="extra content">
+      <span class="right floated">
+       <%=feed.created.toDateString()%>
+      </span>
+                    <span>
+        <i class="user icon"></i>
+        75 Friends
+      </span>
+                </div>
+            </div>
+            </div>
+                <div class="col-lg-6">
+                    <p><em>
+                           " <%=feed.description%>"
+                        </em>
 
+                    </p>
+                    <p>Joined On : "<%=feed.created.toDateString()%>"</p>
+                    <p>Birth Date : "<%=feed.age.toDateString()%>"</p>
 
+                </div>
+            </div>
 
+          <div class="content">
 
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam beatae debitis enim ipsam, magnam molestiae obcaecati pariatur quisquam voluptatibus! Aperiam deleniti eos eveniet excepturi neque officia officiis rerum velit.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolorem doloribus dolorum enim, facilis labore minima molestias nam neque nihil nisi nobis omnis quam quia rem repellendus saepe sunt, unde.</p>
+          </div>
 
+        </div>
 
 <%include ./partials/footer.ejs %>
