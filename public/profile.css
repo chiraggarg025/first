@@ -1,7 +1,9 @@
-p{
+.edit{
     font-family:'Rubik', sans-serif;
     font-size: 2em;
+    color: grey;
 }
-body{
-    background-color: blue;
+
+p{
+    font-size: 1.2em;
 }

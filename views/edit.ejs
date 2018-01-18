@@ -1,40 +1,40 @@
 <%include ./partials/header.ejs %>
 <link rel="stylesheet" href="/new.css">
 <div class = "container edit">
-    <h2>New Swoosh!</h2>
+    <h2>Edit</h2>
 
     <div class = "col-lg-12">
         <hr>
-        <form action="/feed" method="POST">
+        <form action="/feed/<%=feed._id%>?_method=PUT" method="POST">
             <div class ="form-group">
-                <input type="text" class="form-control" name="feed[username]" placeholder="Username" required>
+                <input type="text" class="form-control" name="feed[username]" value="<%=feed.username%>" required>
             </div>
             <div class ="form-group">
-                <input type="text" class ="form-control" name="feed[image]" placeholder="Image URL" required>
+                <input type="text" class ="form-control" name="feed[image]" value="<%=feed.image%>" required>
             </div>
 
             <div class="form-group">
                 <label for="comment" id="comment"><strong>Add something lovely about yourself !:</strong></label>
-                <textarea class="form-control" rows="5" id="comment" name="feed[description]" required></textarea>
+                <textarea class="form-control" rows="5" id="comment" name="feed[description]" required><%=feed.description%></textarea>
             </div>
             <div class ="form-group">
                 <label><strong> Date of Birth :</strong></label>
-                <input type="date" class ="form-control" name="feed[age]" required>
+                <input type="date" class ="form-control" name="feed[age]" value="<%feed.age%>" required>
             </div>
 
             <div class ="form-group term">
-                <input type="text" class ="form-control" name="feed[address]" placeholder="Address" required>
-                </div>
+                <input type="text" class ="form-control" name="feed[address]" value="<%=feed.address%>" required>
+            </div>
             <p>
-                <input type="radio" name="feed[gender]" value="male" checked> Male<br>
+                <input type="radio" name="feed[gender]" value="male"> Male<br>
                 <input type="radio" name="feed[gender]" value="female">  Female<br>
             <p>
             <p style="font-size: 1.2em" class="term">By clicking Create Profile, you agree to our Terms and confirm that you have read our Data Policy, including our Cookie Use Policy. You may receive SMS message notifications from Swoosh! and can opt out at any time.</strong></p>
 
 
 
-            <button type="submit" class="btn btn-success btn-lg btn-block">Create Profile</button>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Update Profile</button>
         </form>
     </div>
 </div>
-    <%include ./partials/footer.ejs %>
+<%include ./partials/footer.ejs %>

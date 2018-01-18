@@ -1,53 +1,83 @@
 <%include ./partials/header.ejs %>
-<link href="https://fonts.googleapis.com/css?family=Rubic" rel="stylesheet">
-         <link rel="stylesheet" href="/profile.css">
 
-        <div class="container jumbotron ">
-            <div class="row">
-            <div class="col-lg-4">
-            <div class="ui link card">
-                <div class="image">
-                    <img src="<%= feed.image%>">
-                </div>
-                <div class="content">
-                    <div class="header"><%=feed.username%></div>
-                    <div class="meta">
-                        <a>Friends</a>
+<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/profile.css">
+<style>
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <!-- Left Column -->
+        <div class="w3-third">
+
+            <div class="w3-white w3-text-grey w3-card-4">
+                <div class="w3-display-container">
+                    <img src="<%=feed.image%>" style="width:100%" alt="Avatar">
+                    <div class="w3-display-bottomleft w3-container w3-text-black">
+                        <h2 style="color:white"><%=feed.username%></h2>
                     </div>
-                    <div class="description">
-
+                </div>
+                <div class="w3-container " style="padding-top: 20px">
+                    <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
+                    <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><%=feed.address%></p>
+                    <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><%=feed.username%>123@gmail.com</p>
+                    <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
+                    <p style="text-transform: capitalize"><i class="fa fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" aria-hidden="true"></i><%=feed.gender%> </p>
+                    <div class="ui two buttons">
+                        <a href="/feed/<%=feed._id%>/edit" class="ui basic green button">Edit Profile</a>
+                        <a href="#" class="ui basic red button">Delete Profile</a>
                     </div>
+                    <hr>
 
                 </div>
-                <div class="extra content">
-      <span class="right floated">
-       <%=feed.created.toDateString()%>
-      </span>
-                    <span>
-        <i class="user icon"></i>
-        75 Friends
-      </span>
-                </div>
-            </div>
-            </div>
-                <div class="col-lg-6">
-                    <p><em>
-                           " <%=feed.description%>"
-                        </em>
+            </div><br>
 
-                    </p>
-                    <p>Joined On : "<%=feed.created.toDateString()%>"</p>
-                    <p>Birth Date : "<%=feed.age.toDateString()%>"</p>
-
-                </div>
-            </div>
-
-          <div class="content">
-
-             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam beatae debitis enim ipsam, magnam molestiae obcaecati pariatur quisquam voluptatibus! Aperiam deleniti eos eveniet excepturi neque officia officiis rerum velit.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolorem doloribus dolorum enim, facilis labore minima molestias nam neque nihil nisi nobis omnis quam quia rem repellendus saepe sunt, unde.</p>
-          </div>
-
+            <!-- End Left Column -->
         </div>
+
+        <!-- Right Column -->
+        <div class="w3-twothird">
+
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <%if(feed.gender=="male"){%>
+                <h1 class="w3-text-grey w3-padding-16"><i class="fa fa-mars fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Hey! I am <strong><%=feed.username%></strong> .Nice to meet You <i class="fa fa-heart" aria-hidden="true"></i></h1>
+                  <%}else{%>
+                <h1 class="w3-text-grey w3-padding-16"><i class="fa fa-venus fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Hey! I am <strong><%=feed.username%></strong> .Nice to meet You <i class="fa fa-heart" aria-hidden="true"></i>  </h1>
+                <%}%>
+                <div class="w3-container">
+                    <p class="edit"><i class="fa fa-comments-o" aria-hidden="true"></i><em>"<%=feed.description%>"</em></p>
+
+                    <h3 class="w3-opacity font"><b><i class="fa fa-birthday-cake" aria-hidden="true"></i> Birth Date :  "<%=feed.age.toDateString()%>"</b></h3>
+                    <hr>
+                    <h3 class="w3-opacity font"><b><i class="fa fa-user-plus" aria-hidden="true"></i> Swooshing Since :  "<%=feed.created.toDateString()%>"</b></h3>
+                      <hr>
+                    <p class="edit">Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                    <p class="edit">Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                    <hr>
+
+            </div>
+
+
+
+            <!-- End Right Column -->
+        </div>
+
+        <!-- End Grid -->
+    </div>
+
+    <!-- End Page Container -->
+</div>
+
 
 <%include ./partials/footer.ejs %>

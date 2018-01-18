@@ -5,7 +5,7 @@ var express         = require("express"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
     session         = require("express-session"),
-    flash           = require("flash")
+    flash           = require("flash"),
     User            = require("./models/user.js"),
     Feed            = require("./models/feed.js"),
     mongoose        = require("mongoose");
@@ -95,7 +95,7 @@ app.get("/feed",function(req,res){
      });
 
 });
-//-----------------------------------New Feed---------------------------------------->
+//-----------------------------------New Profie---------------------------------------->
 app.get("/feed/newprofile",function(req,res){
    res.render("newProfile") ;
 });
@@ -122,6 +122,26 @@ app.get("/feed/:id",function(req,res){
         });
 
 });
+//----------------------------------Edit Profile---------------------------------------->
+ app.get("/feed/:id/edit",function(req,res){
+     Feed.findById(req.params.id,function(err,foundFeed){
+         if(err){
+             console.log(err)
+         }else{
+             res.render("edit",{feed:foundFeed})
+         }
+     });
+ });
+ //Update route
+ app.put("/feed/:id",function (req,res) {
+    Feed.findByIdAndUpdate(req.params.id, req.body.feed ,function (err,updated) {
+       if(err){
+           res.redirect("/feed");
+       } else{
+           res.redirect("/feed/" + req.params.id);
+       }
+    });
+ });
 
   app.listen(process.env.PORT || 4000,function () {
       console.log("Server Started !")
