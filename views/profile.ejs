@@ -75,35 +75,19 @@
 
                 <div class="w3-card w3-margin">
                     <div class="w3-container w3-padding">
-                        <h3 id="comment"> Comments : 5</h3>
+                        <h3 id="comment"> Comments ---</h3>
                     </div>
+
                     <ul class="w3-ul w3-hoverable w3-white">
+                        <%feed.comments.forEach(function(comment){%>
                         <li class="w3-padding-16">
                             <img src="http://bain.design/wp-content/uploads/2013/03/People-Avatar-Set-Rectangular-13.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                            <span class="w3-large">Lorem</span><br>
-                            <span>Sed mattis nunc</span>
+                            <span class="w3-large"><%=comment.author%></span><br>
+                            <span><%=comment.text%></span>
                         </li>
-                        <li class="w3-padding-16">
-                            <img src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/examples/assets/images/avatar/nan.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                            <span class="w3-large">Ipsum</span><br>
-                            <span>Praes tinci sed</span>
-                        </li>
-                        <li class="w3-padding-16">
-                            <img src="http://bain.design/wp-content/uploads/2013/03/People-Avatar-Set-Rectangular-13.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                            <span class="w3-large">Dorum</span><br>
-                            <span>Ultricies congue</span>
-                        </li>
-                        <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-                            <img src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/examples/assets/images/avatar/nan.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                            <span class="w3-large">Mingsum</span><br>
-                            <span>Lorem ipsum dipsum</span>
-                        </li>
-                        <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-                            <img src="http://bain.design/wp-content/uploads/2013/03/People-Avatar-Set-Rectangular-13.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                            <span class="w3-large">Mingsum</span><br>
-                            <span>Lorem ipsum dipsum</span>
-                        </li>
+                        <%})%>
                     </ul>
+
                 </div>
                 <hr>
 

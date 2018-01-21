@@ -109,15 +109,65 @@ app.post("/feed",function (req,res) {
       }
     })
 });
+//---------------------------------SEEED--------------------------
+// Feed.create({
+//     username:"Chanakya",
+//     image:"https://semantic-ui.com/images/avatar2/large/patrick.png",
+//     description :"I am Chanakya",
+//     gender :"Male",
+//     Age     :"wed Mar 18 1998",
+//     address :"New Delhi"
+// },function(err ,feed) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//
+//         console.log("Profile created");
+//     }
+// });
+
+// Feed.create({
+//     username:"Rahul",
+//     image:"https://semantic-ui.com/images/avatar2/large/patrick.png",
+//     description :"I am ",
+//     gender :"Male",
+//     Age     :"wed Mar 18 1999",
+//     address :"New Delhi"
+// },function(err ,feed) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//
+//         console.log("Profile created");
+//     }
+// });
+//
+// Feed.create({
+//     username:"Kenny",
+//     image:"https://semantic-ui.com/images/avatar2/large/patrick.png",
+//     description :"I am Kenny",
+//     gender :"Male",
+//     Age     :"wed Mar 18 1999",
+//     address :"New Delhi"
+// },function(err ,feed) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//
+//         console.log("Profile created");
+//     }
+// });
+//
 
 
 //---------------------------------profile----------------------------------------------->
 app.get("/feed/:id",function(req,res){
 
-        Feed.findById(req.params.id,function(err,foundFeed){
+        Feed.findById(req.params.id).populate("comments").exec(function(err,foundFeed){
          if(err){
              res.redirect("/feed");
          }   else{
+             console.log(foundFeed);
              res.render("profile",{feed:foundFeed});
          }
         });
@@ -153,6 +203,39 @@ app.delete("/feed/:id",function (req,res) {
        }
    }) ;
 });
+//----------------------------Comments--------------------------
+// Comment.create({
+//     author:"Ramu KAKA",
+//     text:"By focusing on algooorithm"
+// },function(err,comment){
+//     if(err){
+//         console.log(err);
+//
+//     }else{
+//         Feed.findOne({username : "Kristy"},function(err, foundUser){
+//             if(err){
+//                 console.log(err);
+//             }else{
+//                 foundUser.comments.push(comment);
+//                 foundUser.save(function (err,data) {
+//                     if(err){
+//                         console.log(err);
+//                     }else{
+//                         console.log(data);
+//                     }
+//                 });
+//             }
+//         });
+//     }
+// });
+//
+//
+
+
+
+
+
+
   app.listen(process.env.PORT || 5000,function () {
       console.log("Server Started !")
   });
