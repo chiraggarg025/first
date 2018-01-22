@@ -8,6 +8,13 @@ var FeedSchema = new mongoose.Schema({
     age     : {type : Date },
     created : {type: Date, default:Date.now },
     gender: {type: String, possibleValues: ['male','female']},
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String,
+    },
     comments : [{
         type : mongoose.Schema.Types.ObjectId,
         ref  : "Comment"

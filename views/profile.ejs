@@ -34,12 +34,23 @@
                     <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><%=feed.username%>123@gmail.com</p>
                     <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
                     <p style="text-transform: capitalize"><i class="fa fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" aria-hidden="true"></i><%=feed.gender%> </p>
+                   <%if(feed.author.id.equals(currentUser._id)){%>
                     <div class="ui  buttons">
                         <a href="/feed/<%=feed._id%>/edit" class="ui basic green button">Edit Profile</a>
                         <form action="/feed/<%=feed.id%>?_method=DELETE" method="POST" style="padding-left: 20px">
                             <button class="ui basic red button">Delete Profile</button>
                         </form>
                     </div>
+                    <%}else{%>
+                    <div class="ui labeled button" tabindex="0">
+                        <div class="ui red button">
+                            <i class="heart icon"></i> Like
+                        </div>
+                        <a class="ui basic red left pointing label">
+                            1,048
+                        </a>
+                    </div>
+                    <%}%>
                     <hr>
 
                 </div>
@@ -64,7 +75,7 @@
                     <hr>
                     <h3 class="w3-opacity font"><b><i class="fa fa-user-plus" aria-hidden="true"></i> Swooshing Since :  "<%=feed.created.toDateString()%>"</b></h3>
                     <hr>
-                    <h3 class="w3-opacity font"><b class="value"><i class="fa fa-user-plus" aria-hidden="true"></i> Page Views :  40,506</b></h3>
+                    <h3 class="w3-opacity font"><b class="value"><i class="fa fa-line-chart" aria-hidden="true"></i> Page Views :  40,506</b></h3>
                       <hr>
 
                     <p class="edit">Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
@@ -75,7 +86,8 @@
 
                 <div class="w3-card w3-margin">
                     <div class="w3-container w3-padding">
-                        <h3 id="comment"> Comments ---</h3>
+
+                        <h3 id="comment"><strong>Comments</strong></h3>
                     </div>
 
                     <ul class="w3-ul w3-hoverable w3-white">
@@ -86,9 +98,11 @@
                             <span><%=comment.text%></span>
                         </li>
                         <%})%>
+
                     </ul>
 
                 </div>
+                <a href="/feed/<%=feed._id%>/comment/new" class="ui teal basic button large">Add Comment</a>
                 <hr>
 
                 <!-- End Right Column -->
