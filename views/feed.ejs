@@ -1,14 +1,17 @@
 <%include ./partials/header.ejs %>
-
+<link href="https://fonts.googleapis.com/css?family=Istok+Web|Lobster" rel="stylesheet">
 <link rel="stylesheet" href="/feed.css">
-<div class="container">
-    <div class="jumbotron">
-        <h1 class="display-4"><i class="fa fa-venus-mars" aria-hidden="true"></i> Welcome to Swoosh! </h1>
-        <p class="lead">This is a feline dating app where you can find your loved one's!</p>
+<div class="big ">
+
+    <div class="edit ">
+        <h1 ><i class="fa fa-venus-mars" aria-hidden="true"></i> Welcome to Swoosh! </h1>
+        <p class="lead" id="textbelow">A Feline Dating App to find your loved one's!</p>
         <p class="lead">
-            <a class="btn btn-success btn-lg" href="/feed/newprofile" role="button">Let's Roll !</a>
+            <a class="btn btn-outline-light btn-lg" href="/feed/newprofile" role="button">Let's Roll !</a>
         </p>
     </div>
+</div>
+<div class="container">
        <div class="row">
 
     <%feeds.forEach(function(feed){%>
@@ -45,5 +48,5 @@
      </div>
 
 </div>
-
+<div class="parallax"></div>
 <%include ./partials/footer.ejs %>

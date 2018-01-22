@@ -1,9 +1,56 @@
 .jumbotron{
     margin-top:35px;
     color: #2c3e50;
-    background-color: #ecf0f1;
+
+
 }
 
 .card{
     box-shadow: black;
+}
+body {
+
+    background-image: url("")
+}
+.big {
+    background-position: center;
+    background-size: cover;
+    background-image: url("/image/feed2.jpg");
+    min-height: 60%;
+}
+.parallax {
+    /* The image used */
+    background-image: url("img_parallax.jpg");
+
+    /* Set a specific height */
+    height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.edit{
+    text-align: center;
+    color: #ecf0f1;
+    padding-top: 10%;
+
+
+}
+h1{
+    font-family: 'Istok Web', sans-serif;
+    font-size: 100px;
+    color:white;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+#textbelow{
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
 }
