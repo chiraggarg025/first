@@ -6,9 +6,9 @@ var express         = require("express"),
     LocalStrategy   = require("passport-local"),
     session         = require("express-session"),
     flash           = require("flash"),
+    Comment         = require("./models/comment.js"),
     User            = require("./models/user.js"),
     Feed            = require("./models/feed.js"),
-    Comment         = require("./models/comment.js"),
     mongoose        = require("mongoose");
 
 
@@ -53,9 +53,9 @@ app.get("/",function (req,res) {
      User.register(new User({username :req.body.username, email:req.body.email}),req.body.password,function(err,user){
          if(err){
              console.log(err);
-
+              res.render("/signup");
          }else{
-             res.redirect("/signup");
+             res.redirect("/feed");
          }
      });
 
@@ -109,57 +109,50 @@ app.post("/feed",function (req,res) {
       }
     })
 });
-//---------------------------------SEEED--------------------------
-// Feed.create({
-//     username:"Chanakya",
-//     image:"https://semantic-ui.com/images/avatar2/large/patrick.png",
-//     description :"I am Chanakya",
-//     gender :"Male",
-//     Age     :"wed Mar 18 1998",
-//     address :"New Delhi"
-// },function(err ,feed) {
-//     if (err) {
+//----------------------------Comments--------------------------
+// Comment.create({
+//     author:"Ramu KAKA",
+//     text:"By focusing on algooorithm"
+// },function(err,comment){
+//     if(err){
 //         console.log(err);
-//     } else {
 //
-//         console.log("Profile created");
-//     }
-// });
-
-// Feed.create({
-//     username:"Rahul",
-//     image:"https://semantic-ui.com/images/avatar2/large/patrick.png",
-//     description :"I am ",
-//     gender :"Male",
-//     Age     :"wed Mar 18 1999",
-//     address :"New Delhi"
-// },function(err ,feed) {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//
-//         console.log("Profile created");
+//     }else{
+//         Feed.findOne({username : "Kristy"},function(err, foundUser){
+//             if(err){
+//                 console.log(err);
+//           }else{
+//                 foundUser.comments.push(comment);
+//                 foundUser.save(function (err,data) {
+//                     if(err){
+//                         console.log(err);
+//                     }else{
+//                         console.log(data);
+//                     }
+//                 });
+//             }
+//         });
 //     }
 // });
 //
-// Feed.create({
-//     username:"Kenny",
-//     image:"https://semantic-ui.com/images/avatar2/large/patrick.png",
-//     description :"I am Kenny",
-//     gender :"Male",
-//     Age     :"wed Mar 18 1999",
-//     address :"New Delhi"
-// },function(err ,feed) {
-//     if (err) {
-//         console.log(err);
-//     } else {
 //
-//         console.log("Profile created");
+
+// var commentSchema = new mongoose.Schema({
+//     text : String,
+//     author : String
+// });
+// var Test = mongoose.model("Test",commentSchema);
+// Test.create({
+//     text :"this looks like s,s,OsMG",
+//     author:"Rohisssst"
+// },function (err,create) {
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         console.log(create);
 //     }
 // });
-//
-
-
 //---------------------------------profile----------------------------------------------->
 app.get("/feed/:id",function(req,res){
 
@@ -203,36 +196,41 @@ app.delete("/feed/:id",function (req,res) {
        }
    }) ;
 });
-//----------------------------Comments--------------------------
-// Comment.create({
-//     author:"Ramu KAKA",
-//     text:"By focusing on algooorithm"
-// },function(err,comment){
-//     if(err){
-//         console.log(err);
-//
-//     }else{
-//         Feed.findOne({username : "Kristy"},function(err, foundUser){
-//             if(err){
-//                 console.log(err);
-//             }else{
-//                 foundUser.comments.push(comment);
-//                 foundUser.save(function (err,data) {
-//                     if(err){
-//                         console.log(err);
-//                     }else{
-//                         console.log(data);
-//                     }
-//                 });
-//             }
-//         });
-//     }
-// });
-//
-//
 
+//----------------------------------------Add NEW Comment-------------------------------------->
+app.get("/feed/:id/comment/new",function (req,res) {
+   Feed.findById(req.params.id,function (err,foundUser) {
+       if(err){
+           console.log(err);
+       }else{
+           res.render("comment",{feed:foundUser});
+       }
+   })
+});
+app.post("/feed/:id/comment",function (req,res) {
+    Comment.create(req.body.comment,function(err,comment){
+    if(err){
+        console.log(err);
 
-
+    }else{
+        Feed.findById(req.params.id,function(err, foundUser){
+            if(err){
+                console.log(err);
+          }else{
+                foundUser.comments.push(comment._id);
+                foundUser.save(function (err,data) {
+                    if(err){
+                        console.log(err);
+                    }else{
+                        console.log(data);
+                        res.redirect("/feed");
+                    }
+                });
+            }
+        });
+    }
+});
+});
 
 
 
