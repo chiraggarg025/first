@@ -14,8 +14,8 @@ var express         = require("express"),
 
 //requiring route
 //mongodb://localhost/swoosh
-
-mongoose.connect("mongodb://chanakya:asdfghjkl@ds259117.mlab.com:59117/swoosh");
+//mongodb://chanakya:asdfghjkl@ds259117.mlab.com:59117/swoosh
+mongoose.connect("mongodb://localhost/swoosh");
 app.set("view engine","ejs");
 app.use(express.static("public"));
 // app.use(expressSanitizer());
@@ -89,7 +89,7 @@ app.get('/logout', function(req, res){
 });
 //--------------------------------About Page-------------------------------------->
 app.get("/about",function(req,res){
-    res.send("This will be the about page");
+    res.render("about");
 });
 
 //---------------------------------Feed Page--------------------------------------->
