@@ -13,6 +13,7 @@ var express         = require("express"),
 
 
 //requiring route
+//mongodb://localhost/swoosh
 
 mongoose.connect("mongodb://localhost/swoosh");
 app.set("view engine","ejs");
