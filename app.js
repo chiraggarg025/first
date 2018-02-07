@@ -15,7 +15,7 @@ var express         = require("express"),
 //requiring route
 //mongodb://localhost/swoosh
 //mongodb://chanakya:asdfghjkl@ds259117.mlab.com:59117/swoosh
-mongoose.connect("mongodb://localhost/swoosh");
+mongoose.connect("mongodb://chanakya:asdfghjkl@ds259117.mlab.com:59117/swoosh");
 app.set("view engine","ejs");
 app.use(express.static("public"));
 // app.use(expressSanitizer());
