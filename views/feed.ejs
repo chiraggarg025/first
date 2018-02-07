@@ -1,22 +1,22 @@
 <%include ./partials/header.ejs %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Istok+Web|Lobster" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Istok+Web|Lobster" rel="stylesheet">
 <link rel="stylesheet" href="/feed.css">
-<div class="big ">
 
-    <div class="edit ">
-
-        <h1 ><i class="fa fa-venus-mars" aria-hidden="true"></i> Welcome to Swoosh! </h1>
-        <p class="lead" id="textbelow">A Feline Dating App to find your loved one's!</p>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4" style="font-size: 100px" class="display-4"><i class="fa fa-venus-mars" aria-hidden="true"></i> Let's Swoosh!</h1>
+        <div class="lead" style="font-size: 25px ">"Explore the one of the Most beautiful profiles Ahead!"</div>
         <p class="lead">
-            <a class="btn btn-outline-light btn-lg" href="/feed/newprofile" role="button">Let's Roll !</a>
+            <a class="btn btn-outline-light btn-lg" href="/feed/newprofile" role="button">Get Started!</a>
         </p>
     </div>
-</div>
-<div class="container">
        <div class="row">
 
     <%feeds.forEach(function(feed){%>
-           <div class ="col-lg-4">
+           <div class ="col-lg-4 col-sm-12">
         <div class="ui link cards" style="margin-top: 20px">
             <div class="card">
                 <div class="image">

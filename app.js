@@ -15,7 +15,7 @@ var express         = require("express"),
 //requiring route
 //mongodb://localhost/swoosh
 //mongodb://chanakya:asdfghjkl@ds259117.mlab.com:59117/swoosh
-mongoose.connect("mongodb://chanakya:asdfghjkl@ds259117.mlab.com:59117/swoosh");
+mongoose.connect("mongodb://localhost/swoosh");
 app.set("view engine","ejs");
 app.use(express.static("public"));
 // app.use(expressSanitizer());
@@ -227,7 +227,7 @@ function checkOwnership(req ,res ,next) {
     }
 }
 
-  app.listen(process.env.PORT || 5000,function () {
+  app.listen(process.env.PORT || 4000,function () {
       console.log("Server Started !")
   });
 
